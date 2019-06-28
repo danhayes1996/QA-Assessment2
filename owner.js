@@ -91,7 +91,7 @@ function createElement(tag, text, className, parent){
 
 function fixNames(v){
     v = v[0].toUpperCase() + v.substring(1);
-    for(let i = 0; i < v.length; i++){
+    for(let i = 1; i < v.length; i++){
         if(v[i] === v[i].toUpperCase()){
             v = v.substring(0, i) + " " + v.substring(i);
             i++;
