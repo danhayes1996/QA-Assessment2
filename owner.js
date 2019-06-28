@@ -25,7 +25,7 @@ function createPage(owner){
 
 function createPets(pets){
     const div = document.getElementById('main');
-    
+    createElement('h4', "Pets", 'title', div);
     for(pet of pets){ 
         const petDiv = document.createElement('div');
         createElement('h4', pet.name, "card-header", petDiv);
