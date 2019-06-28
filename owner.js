@@ -17,7 +17,7 @@ function createPage(owner){
    createElement('h4', firstName + " " + lastName, 'card-header', ownerDiv);
     ownerDiv.className = "card m-4 p-2";
     for(e in other){   
-        createElement('p', e + ": " + owner[e], 'ownerElement', ownerDiv);
+        createElement('p', fixNames(e) + ": " + owner[e], 'ownerElement', ownerDiv);
     }
     div.append(ownerDiv);
     createPets(pets);
@@ -38,7 +38,7 @@ function createPets(pets){
 }
 
 function createPet(currentPet, parent){
-    const {id, owner, ...pet} = currentPet;
+    const {id, owner, name, ...pet} = currentPet;
     for(e in pet){
         if(Array.isArray(pet[e])){
             const visitsDiv = document.createElement('div');
@@ -52,9 +52,9 @@ function createPet(currentPet, parent){
             parent.append(visitsDiv);
         }
         else if(typeof pet[e] === 'object'){
-            createElement('p', "type: " + pet[e].name, 'info', parent);
+            createElement('p', "Type: " + pet[e].name, 'info', parent);
         }else {
-            createElement('p', e + ": " + pet[e], 'info', parent);
+            createElement('p', fixNames(e) + ": " + pet[e], 'info', parent);
         }
     }
 
@@ -87,4 +87,15 @@ function createElement(tag, text, className, parent){
         parent.append(e);
     }
     return e;
+}
+
+function fixNames(v){
+    v = v[0].toUpperCase() + v.substring(1);
+    for(let i = 0; i < v.length; i++){
+        if(v[i] === v[i].toUpperCase()){
+            v = v.substring(0, i) + " " + v.substring(i);
+            i++;
+        }
+    }
+    return v;
 }
