@@ -29,6 +29,7 @@ function createPets(pets){
         const petDiv = document.createElement('div');
         petDiv.className = 'pet';
         createPet(pet, petDiv);
+        
         div.append(petDiv);
     }
     //console.log(pets);
@@ -42,7 +43,12 @@ function createPet(currentPet, parent){
             visitsDiv.className = 'visits';
             createElement('p', "Visits: ", 'visitsEl', visitsDiv);
             for(visit in pet[e]){
-                createElement('p', visit, 'visitsEl', visitsDiv);
+                if(pet[e] && pet[e][visit]){
+                    console.log(pet[e][visit]);
+                    createVisit(pet[e][visit], visitsDiv);
+                } else {
+                    console.log('visit error');
+                }
             }
             parent.append(visitsDiv);
         }
@@ -52,6 +58,30 @@ function createPet(currentPet, parent){
             createElement('p', e + ": " + pet[e], 'info', parent);
         }
     }
+
+    //btns
+    const modBtn = document.createElement('input');
+    modBtn.setAttribute('value', "Modify");
+    modBtn.setAttribute('type', 'button');
+    modBtn.addEventListener('click', (e) => {
+        console.log('modify btn click')
+    });
+
+    const delBtn = document.createElement('input');
+    delBtn.setAttribute('value', "Delete");
+    delBtn.setAttribute('type', 'button');
+    delBtn.addEventListener('click', (e) => {
+        console.log('delete btn click')
+    });
+    parent.append(modBtn, delBtn);
+}
+
+function createVisit({date, description}, parent){
+    const visitDiv = document.createElement('div');
+    visitDiv.className = 'visit';
+    createElement('p', 'Date: ' + date, 'visitEl', visitDiv);
+    createElement('p', 'Description: ' + description, 'visitEl', visitDiv);
+    parent.append(visitDiv);
 }
 
 function createElement(tag, text, className, parent){
