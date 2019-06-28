@@ -6,3 +6,21 @@
       column-count: 5;
     }
   }
+
+.title {
+    text-align: center;
+}  
+
+h4 {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+h6 {
+    margin-left: 5px;
+}
+
+.card {
+    text-align: center;
+    padding: 5px;
+}

@@ -43,7 +43,7 @@ function createPet(currentPet, parent){
         if(Array.isArray(pet[e])){
             const visitsDiv = document.createElement('div');
             visitsDiv.className = 'visits';
-            createElement('h4', "Visits: ", 'card-header', visitsDiv);
+            createElement('h5', "Visits: ", 'card-header', visitsDiv);
             for(visit in pet[e]){
                 if(pet[e] && pet[e][visit]){
                     createVisit(pet[e][visit], visitsDiv);

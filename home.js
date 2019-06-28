@@ -23,7 +23,7 @@ function displayOwners1(value) {
         lName.innerText = owner.lastName;
 
         let tel = document.createElement('h6');
-        tel.innerText = owner.telephone;
+        tel.innerText = "Phone No: " + owner.telephone;
 
         oDiv.append(fName, lName, tel);
               
